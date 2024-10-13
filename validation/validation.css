@@ -1,0 +1,22 @@
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    width: 100%;
+  }
+  
+  .no-error-visible {
+    visibility: hidden;
+  }
+  
+  @media (max-width: 900px) {
+    .error-message{
+        font-size: 9px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .error-message{
+        font-size: 10px;
+      }
+  }

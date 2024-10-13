@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Board</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- script -->
+    <script src="../sidebar/sidebarScript.js"></script>
+    <script src="../header/Headerscript.js"></script>
+    <script src="../calendar/script.js"></script>
+    <script src="board.js"></script>
+    <script src="../boardOverlays/tasksBoard.js"></script>
+    <script src="../boardOverlays/boardOverlays.js"></script>
+    <script src="../boardOverlays/taskBoardRender.js"></script>
+    <script src="../database/script.js"></script>
+    <script src="../database_tasks/taskOverlay.js"></script>
+    <script src="../database_tasks/taskOverlays_templates.js"></script>
+    <script src="../validation/validation.js"></script>   
+    <script src="../log_in/script.js"></script>
+    <script src="../alertOverlays/script.js"></script>
+    <script src="boardRender.js"></script>
+    <!-- style -->
+    <link rel="stylesheet" href="../header/headerStyle.css" />
+    <link rel="stylesheet" href="../sidebar/style.css" />
+    <link rel="stylesheet" href="../header/header_style_mobile.css" />
+    <link rel="stylesheet" href="../boardOverlays/boardOverlays.css" />
+    <link rel="stylesheet" href="../database_tasks/taskOverlay.css">
+    <link rel="stylesheet" href="../validation/validation.css" /> 
+    <link rel="stylesheet" href="../alertOverlays/style.css" /> 
+    <link rel="stylesheet" href="board.css" />
+    <link
+      rel="shortcut icon"
+      href="../favicon/img/favicon.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body onload="initialCallBoard()">
+    <div id="messageOverlay"></div>
+
+    <!-- Sidebar wird hier dynamisch geladen -->
+    <div class="side-wrap">
+      <div class="sidebar"></div>
+    </div>
+    <div id="header-placeholder"></div>
+    <!-- header and sidebar from includeHTML -->
+    <section id="taskOverlaySection" class="flexContainer none">
+    </section>
+    <!-- Overlay start -->
+    <div id="addTaskBoardOverlayContainer" class="flexContainerCol none">
+      <!-- Start - Heiko auskommentiert, da der Teil gerendert wird! -->
+      <!-- Ende - Heiko auskommentiert -->
+    </div> 
+    <!-- Overlay end -->
+    <main class="main-board">
+      <header class="header-board">
+        <div class="headline-board">
+          <h2 class="h2-board">Board</h2>
+        </div>
+        <div class="search-and-addTask">
+          <div class="searchbar">
+            <input
+              id="searchInput"
+              class="search-input"
+              type="text"
+              placeholder="Find Task"
+            />
+            <img
+              onclick="searchTasks()"
+              class="search-img"
+              src="../assets/icons/search.svg"
+              alt="search"
+            />
+          </div>
+          <button
+          onclick="openTaskOverlayWithCategoryPreset(0)"
+          class="addTask-button"
+          >
+          <!-- Ende -  Heiko neu eingefügt -->
+            <p class="add-task">Add Task</p>
+            <img src="../assets/icons/add.svg" alt="add" />
+          </button>
+        </div>
+      </header>
+      <section class="board">
+        <article class="column-board">
+          <div class="column-board-header">
+            <h2 class="column-headline">To do</h2>
+            <img
+            onclick="openTaskOverlayWithCategoryPreset(0)"
+            class="plus-button"
+            src="../assets/icons/plus button.svg"
+            alt="add task"
+          />
+          <!-- Ende -  Heiko neu eingefügt -->
+          </div>
+          <div class="slider-tasks">
+            <div
+              id="columnToDo"
+              class="column-content"
+              ondrop="moveTo(0)"
+              ondragleave="removeHighlight('columnToDo')"
+              ondragover="allowDrop(event); highlight('columnToDo')"
+            >
+              <div class="empty-column">No tasks to do</div>
+            </div>
+          </div>
+        </article>
+        <article class="column-board">
+          <div class="column-board-header">
+            <h2 class="column-headline">In progress</h2>
+             <img
+             onclick="openTaskOverlayWithCategoryPreset(1)"
+             class="plus-button"
+             src="../assets/icons/plus button.svg"
+             alt="add task"
+           />
+           <!-- Ende -  Heiko neu eingefügt -->
+          </div>
+          <div class="slider-tasks">
+            <div
+              id="columnProgress"
+              class="column-content"
+              ondrop="moveTo(1)"
+              ondragleave="removeHighlight('columnProgress')"
+              ondragover="allowDrop(event); highlight('columnProgress')"
+            >
+              <!-- render tasks here -->
+              <div class="empty-column">No tasks in progress</div>
+            </div>
+          </div>
+        </article>
+        <article class="column-board">
+          <div class="column-board-header">
+            <h2 class="column-headline">Await feedback</h2>
+            <img
+            onclick="openTaskOverlayWithCategoryPreset(2)"
+            class="plus-button"
+            src="../assets/icons/plus button.svg"
+            alt="add task"
+          />
+          <!-- Ende -  Heiko neu eingefügt -->
+          </div>
+          <div class="slider-tasks">
+            <div
+              id="columnFeedback"
+              class="column-content"
+              ondrop="moveTo(2)"
+              ondragleave="removeHighlight('columnFeedback')"
+              ondragover="allowDrop(event); highlight('columnFeedback')"
+            >
+              <!-- render tasks here -->
+              <div class="empty-column">No tasks awaiting</div>
+            </div>
+          </div>
+        </article>
+        <article class="column-board">
+          <div class="column-board-header">
+            <h2 class="column-headline">Done</h2>
+          </div>
+          <div class="slider-tasks">
+            <div
+              id="columnDone"
+              class="column-content"
+              ondrop="moveTo(3)"
+              ondragleave="removeHighlight('columnDone')"
+              ondragover="allowDrop(event); highlight('columnDone')"
+            >
+              <div class="empty-column">No tasks done</div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script src="../database_tasks/taskOverlay.js"></script>
+
+  </body>
+</html>

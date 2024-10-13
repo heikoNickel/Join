@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Sign up</title>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- script -->
+    <script src="../validation/validation.js"></script>
+    <script src="../database/script.js"></script>
+    <script src="../alertOverlays/script.js"></script>
+
+    <!-- style -->
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../validation/validation.css" />
+    <link rel="stylesheet" href="../alertOverlays/style.css" />
+    <link
+      rel="shortcut icon"
+      href="../favicon/img/favicon.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body onload="firstLoadSignUp()">
+    <div id="messageOverlay"></div>
+    <div id="contentWrapper" class="flexContainerCol">
+      <div id="logoFormContainer" class="flexContainer">
+        <div id="headerLogoContainer" class="headerLogo flexContainer">
+          <img
+            id="joinLogo"
+            class="joinLogo"
+            src="../assets/icons/Logo_login.svg"
+            alt="join.logo"
+          />
+        </div>
+        <main id="main" class="mainSignUp" class="flexContainerCol">
+          <form
+            id="signUpForm"
+            onsubmit=" ; return false"
+            class="form flexContainerCol"
+          >
+            <div id="arrowTitleBorderContainer" class="flexContainer">
+              <div id="arrowContainer" class="flexContainer">
+                <img
+                  id="arrowLeftBlue"
+                  src="../database/images/arrow-left-line.svg"
+                  alt="icon"
+                  onclick="location.href='../log_in/log_in.html'"
+                />
+              </div>
+              <div id="titleBorderContainer" class="flexContainerCol">
+                <h1 id="formHeadline" class="formHeadline">Sign up</h1>
+                <div id="borderSignUp" class="borderSignUp"></div>
+              </div>
+            </div>
+
+            <section id="signUpData" class="signUpData flexContainerCol">
+              <div class="dataContainer flexContainerCol">
+                <input
+                  id="signUpName"
+                  class="inputName"
+                  type="text"
+                  placeholder="Name"
+                  autocomplete="name"
+                  title="required"
+                  onblur="validateUserName('signUpName')"
+                  onfocus="resetSingleInputError('signUpName')"
+                />
+                <span
+                  id="signUpNameErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+              <div class="dataContainer flexContainerCol">
+                <input
+                  id="signUpEmail"
+                  class="inputEmail"
+                  type="email"
+                  placeholder="Email"
+                  autocomplete="email"
+                  title="required"
+                  onblur="validateSignUpEmail('signUpEmail')"
+                  onfocus="resetSingleInputError('signUpEmail')"
+                />
+                <span
+                  id="signUpEmailErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+              <div class="dataContainer flexContainerCol">
+                <input
+                  id="signUpPassword"
+                  class="inputPassword"
+                  type="password"
+                  placeholder="Password"
+                  autocomplete="currentPassword"
+                  title="required"
+                  onblur="validatePassword('signUpPassword'), passwordFieldInactive('signUpPassword', 'pwSignUpOverlay')"
+                  onfocus="resetSingleInputError('signUpPassword'), passwordFieldActive('signUpPassword', 'pwSignUpOverlay')"
+                />
+                <div
+                  id="pwSignUpOverlay"
+                  class="icon-overlay d-none"
+                  onclick="togglePasswordVisibility('signUpPassword')"
+                ></div>
+                <!-- Heiko zugefügt -->
+                <span
+                  id="signUpPasswordErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+              <div class="dataContainer flexContainerCol">
+                <input
+                  id="signUpPassword2"
+                  class="inputPassword"
+                  type="password"
+                  placeholder="Confirm Password"
+                  autocomplete="currentConfirmPassword"
+                  title="required"
+                  onblur="validatePassword2('signUpPassword2', `signUpPassword`), passwordFieldInactive('signUpPassword2', 'pw2SignUpOverlay')"
+                  onfocus="resetSingleInputError('signUpPassword2'), passwordFieldActive('signUpPassword2', 'pw2SignUpOverlay')"
+                />
+                <div
+                  id="pw2SignUpOverlay"
+                  class="icon-overlay d-none"
+                  onclick="togglePasswordVisibility('signUpPassword2')"
+                ></div>
+                <!-- Heiko zugefügt -->
+                <span
+                  id="signUpPassword2ErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+            </section>
+            <section class="formPrivacyPolicy flexContainer">
+              <div class="checkbox flexContainerCol">
+                <div id="checkboxContainer" class="flexContainer">
+                  <input
+                    id="checkboxPrivacyPolicy"
+                    type="checkbox"
+                    class="checkboxPrivacyPolicy checkboxUnchecked"
+                  />
+                  <label
+                    id="labelPrivacyPolicy"
+                    for="formPrivacyPolicy"
+                    class="labelPrivacyPolicy"
+                    >I accept the
+                    <span
+                      onclick="location.href='../policies_clear/policies_clear.html'"
+                      id="privacyPolicySpan"
+                      >Privacy Policy</span
+                    ></label
+                  >
+                </div>
+                <span
+                  id="checkboxPrivacyPolicyErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+            </section>
+            <section class="formSubmit">
+              <!-- <button
+                id="signUpBtn"
+                type="submit"
+                class="signUpBtn"
+                onclick="storeNewUser()"
+                disabled
+              > -->
+              <button
+                id="signUpBtn"
+                type="submit"
+                class="signUpBtn"
+                onclick="checkIfEmailAlreadyExists()"
+                disabled
+              >
+                Sign Up
+              </button>
+            </section>
+          </form>
+        </main>
+      </div>
+      <!-- Marv -->
+    </div>
+    <footer id="footer1" class="flexContainer">
+      <button
+        id="privacy-policy-button1"
+        data-target="../policies_clear/policies_clear.html"
+        class="police-button-sign-up"
+      >
+        Privacy Policy
+      </button>
+      <button
+        id="legal-notice-button1"
+        data-target="../legal_notice_clear/legal_notice_clear.html"
+        class="police-button-sign-up"
+      >
+        Legal notice
+      </button>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>

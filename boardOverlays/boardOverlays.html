@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Task Overlay</title>
+    <link rel="icon" type="image/x-icon" href="../database/images/logo.svg" />
+    <link rel="stylesheet" href="./boardOverlays.css" />
+  </head>
+  <body onload="initialCallBoardOverlays()">
+    <div class="mainContainer">
+      <header>
+        <div class="flexContainer">
+          <div class="flexItem"></div>
+          <div class="flexItem headerNavContainer">
+            <nav class="headerNav"></nav>
+          </div>
+          <div class="flexItem"></div>
+        </div>
+      </header>
+
+      <main>
+        <section id="sectionContainer" class="flexContainer">
+          <div id="boardOverlaysContainer">
+            <!--Overlay Start-->
+            <!--Overlay End-->
+          </div>
+        </section>
+      </main>
+      <footer>
+        <div class="flexContainer">
+          <div class="flexItem"></div>
+          <div class="flexItem footerNavContainer">
+            <nav class="footerNav"></nav>
+          </div>
+          <div class="flexItem"></div>
+        </div>
+      </footer>
+    </div>
+    <script src="tasksBoard.js"></script>
+    <script src="../database/script.js"></script>
+    <script src="./boardOverlays.js"></script>
+    <script src="../sign_up/script.js"></script>
+    <!-- <script src="../validation/validation.js"></script> -->
+  </body>
+</html>

@@ -1,0 +1,453 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter";
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexContainerCol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Marv zugefügt */
+.police-button-sign-up {
+  color: #a8a8a8;
+  background-color: #f5f5f5;
+  /*  width: 232px; Fabio rauskommentiert  */
+  height: 35px;
+  border: none;
+  cursor: pointer;
+}
+
+.police-button-sign-up:hover {
+  color: #29abe2;
+}
+/* Marv ende */
+
+.d-none {
+  display: none;
+}
+
+#contentWrapper {
+  justify-content: flex-start;
+  background-color: #f5f5f5;
+  height: 100vh;
+  width: 100%;
+}
+
+#logoFormContainer {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+#headerLogoContainer {
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 90%;
+  width: 25%;
+}
+
+#joinLogo {
+  height: 100px;
+  width: auto;
+  padding-left: 50px;
+}
+
+#main {
+  width: 50%;
+  padding-top: 6%;
+}
+
+.mainSignUp {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#signUpBtn {
+  color: white;
+  background-color: #2a3647;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  gap: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 700;
+  border: 1px solid #2a3647;
+}
+
+/* Heiko zugefügt */
+.signUpBtn-disabled {
+  background-color: grey !important;
+  pointer-events: none !important;
+}
+
+.icon-overlay {
+  opacity: 0.5;
+  position: absolute;
+  right: 11px;
+  top: 2%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
+}
+/* Heiko zugefügt Ende */
+
+#signUpForm {
+  width: 620px;
+  padding: 40px 0;
+  gap: 26px;
+  height: 64vh;
+}
+
+.form {
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 30px;
+}
+
+.formHeadline {
+  width: 100%;
+  margin: 0;
+  font-size: 61px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#arrowTitleBorderContainer {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+#borderSignUp {
+  width: 48%;
+  height: 3px;
+  background-color: #29abe2;
+}
+
+#arrowContainer {
+  justify-content: flex-start;
+  width: 25%;
+}
+
+#arrowLeftBlue {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding-left: 40px;
+}
+
+#titleBorderContainer {
+  gap: 14px;
+  width: 50%;
+}
+
+.dataContainer {
+  gap: 4px;
+  position: relative;
+}
+
+.error-message {
+  font-size: 10px;
+  color: red;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#signUpData {
+  width: 100%;
+  gap: 12px;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+  width: 360px;
+  padding: 8px;
+  text-indent: 8px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: 95%;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+input[type="email"]::placeholder,
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #d1d1d1 !important;
+}
+
+input[type="email"]:focus,
+input[type="email"]:active,
+input[type="text"]:focus,
+input[type="text"]:active,
+input[type="password"]:focus,
+input[type="password"]:active {
+  outline-color: #29abe2;
+}
+
+.inputName {
+  background-image: url(../database/images/personSU.svg);
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.inputEmail {
+  background-image: url(../database/images/mailSU.svg);
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.inputPassword {
+  background-image: url(../database/images/lockSU.svg);
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.formPrivacyPolicy {
+  width: 100%;
+}
+
+.checkbox {
+  gap: 10px;
+}
+
+#checkboxContainer {
+  gap: 12px;
+}
+
+.checkboxPrivacyPolicy {
+  cursor: pointer;
+}
+
+.formPrivacyPolicy {
+  font-weight: 400;
+}
+
+.formSubmit {
+  display: flex;
+  gap: 35px;
+}
+
+#signUpBtn:hover {
+  background-color: #29abe2;
+  border: 1px solid #29abe2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#signUp {
+  font-size: 16px;
+}
+
+.p-user {
+  font-size: 18px;
+}
+
+.not-a-user {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  position: absolute;
+  top: 40px;
+  right: 48px;
+  z-index: 9;
+  gap: 36px;
+}
+
+#checkboxPrivacyPolicy {
+  cursor: pointer;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+}
+
+.checkboxUnchecked::before {
+  content: url("../database/images/unchecked_button.svg");
+  transform: scale(0.8);
+}
+
+.checkboxChecked::before {
+  content: url("../database/images/checked_button.svg");
+  transform: scale(0.8);
+}
+
+.labelPrivacyPolicy {
+  font-size: 14px;
+}
+
+#privacyPolicySpan {
+  color: #29abe2;
+}
+
+#privacyPolicySpan:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #29abe2;
+}
+
+footer {
+  gap: 20px;
+  color: #a8a8a8;
+  position: absolute;
+  bottom: 0;
+  height: 2.5rem;
+  width: 100%;
+}
+
+footer p {
+  cursor: pointer;
+}
+
+@media (min-width: 1201px) {
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 900px) {
+  #joinLogo {
+    height: 80px;
+    width: auto;
+    padding-left: 20px;
+  }
+
+  #signUpForm {
+    width: 460px;
+  }
+}
+
+@media (max-width: 680px) {
+  #logoFormContainer {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #headerLogoContainer {
+    height: auto;
+    width: 80%;
+  }
+
+  #formHeadline {
+    font-size: 46px !important;
+  }
+
+  #joinLogo {
+    height: 60px;
+    width: auto;
+    padding-top: 20px;
+  }
+
+  #main {
+    width: 80%;
+    padding-top: 0;
+  }
+
+  #signUpForm {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    width: 300px;
+    font-size: 16px;
+  }
+
+  #labelPrivacyPolicy,
+  #footer {
+    font-size: 14px;
+  }
+
+  .icon-overlay {
+    right: 10px;
+    top: 2%;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  #arrowTitleBorderContainer {
+    align-items: flex-start;
+  }
+
+  #logoFormContainer {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  #headerLogoContainer {
+    height: auto;
+    width: 94%;
+  }
+
+  #formHeadline {
+    font-size: 36px !important;
+  }
+
+  #joinLogo {
+    height: 60px;
+    width: auto;
+    padding-top: 10px;
+  }
+
+  #main {
+    width: 94%;
+    padding-top: 0;
+  }
+
+  #signUpForm {
+    width: 100%;
+    padding: 20px 0;
+    gap: 10px;
+  }
+
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    width: 250px;
+    font-size: 16px;
+  }
+
+  #arrowLeftBlue {
+    padding-left: 20px;
+    padding-top: 10px;
+  }
+
+  #labelPrivacyPolicy,
+  #footer {
+    font-size: 14px;
+  }
+
+  .icon-overlay {
+    right: 8px;
+    top: 2%;
+    width: 35px;
+    height: 35px;
+  }
+}
